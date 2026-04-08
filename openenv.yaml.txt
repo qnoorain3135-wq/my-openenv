@@ -1,0 +1,29 @@
+name: budget-tracker-env
+version: "1.0"
+description: "An OpenEnv environment where an AI agent manages a monthly budget"
+action_space:
+  type: discrete
+  actions:
+    - allocate_food
+    - allocate_transport
+    - allocate_savings
+    - allocate_entertainment
+    - skip
+observation_space:
+  type: dict
+  fields:
+    - remaining_budget: float
+    - food_spent: float
+    - transport_spent: float
+    - savings: float
+    - entertainment_spent: float
+    - day: int
+    - month_target_savings: float
+reward_range: [0.0, 1.0]
+tasks:
+  - id: easy
+    description: "Save at least 10% of budget"
+  - id: medium
+    description: "Save 20% and keep food under 30%"
+  - id: hard
+    description: "Save 30%, food under 25%, entertainment under 10%"
